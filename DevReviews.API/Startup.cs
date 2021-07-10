@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
+using DevReviews.API.Persistence;
+
 namespace DevReviews.API
 {
     public class Startup
@@ -26,6 +28,9 @@ namespace DevReviews.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Injeção de Dependência
+            // Tipos: Transient, Scoped, Singleton
+            services.AddSingleton<DevReviewsDbContext>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
