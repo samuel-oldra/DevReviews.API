@@ -33,5 +33,11 @@ namespace DevReviews.API.Entities
         {
             Reviews.Add(review);
         }
+
+        public void Update(string description, decimal price)
+        {
+            this.Description = description;
+            this.Price = price;
+        }
     }
 }
