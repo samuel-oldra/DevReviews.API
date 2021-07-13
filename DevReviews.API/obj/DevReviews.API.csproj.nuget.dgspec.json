@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj": {}
+    "c:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj": {
+    "c:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj",
+        "projectUniqueName": "c:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj",
         "projectName": "DevReviews.API",
-        "projectPath": "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj",
+        "projectPath": "c:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj",
         "packagesPath": "C:\\Users\\SAMUEL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\obj\\",
+        "outputPath": "c:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SAMUEL\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,6 +38,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
