@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj": {}
+    "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj": {}
   },
   "projects": {
-    "c:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj": {
+    "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj",
+        "projectUniqueName": "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj",
         "projectName": "DevReviews.API",
-        "projectPath": "c:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj",
+        "projectPath": "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj",
         "packagesPath": "C:\\Users\\SAMUEL\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\obj\\",
+        "outputPath": "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SAMUEL\\AppData\\Roaming\\NuGet\\NuGet.Config"

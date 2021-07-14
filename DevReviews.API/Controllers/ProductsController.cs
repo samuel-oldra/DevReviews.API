@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+using AutoMapper;
 using DevReviews.API.Entities;
 using DevReviews.API.Models;
 using DevReviews.API.Persistence;
@@ -16,9 +17,12 @@ namespace DevReviews.API.Controllers
     {
         private readonly DevReviewsDbContext _dbContext;
 
-        public ProductsController(DevReviewsDbContext dbContext)
+        private readonly IMapper _mapper;
+
+        public ProductsController(DevReviewsDbContext dbContext, IMapper mapper)
         {
             this._dbContext = dbContext;
+            this._mapper = mapper;
         }
 
         // GET: api/products
@@ -27,7 +31,7 @@ namespace DevReviews.API.Controllers
         {
             var products = _dbContext.Products;
 
-            var productsViewModel = products.Select(p => new ProductViewModel(p.Id, p.Title, p.Price));
+            var productsViewModel = _mapper.Map<List<ProductViewModel>>(products);
 
             return Ok(productsViewModel);
         }
@@ -45,19 +49,7 @@ namespace DevReviews.API.Controllers
                 return NotFound();
             }
 
-            var reviewsViewModel = product
-                .Reviews
-                .Select(r => new ProductReviewViewModel(r.Id, r.Author, r.Rating, r.Comments, r.RegisteredAt))
-                .ToList();
-
-            var productDetails = new ProductDetailsViewModel(
-                product.Id,
-                product.Title,
-                product.Description,
-                product.Price,
-                product.RegisteredAt,
-                reviewsViewModel
-            );
+            var productDetails = _mapper.Map<ProductDetailsViewModel>(product);
 
             return Ok(productDetails);
         }

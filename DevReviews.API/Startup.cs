@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 using DevReviews.API.Persistence;
+using DevReviews.API.Profiles;
 
 namespace DevReviews.API
 {
@@ -31,6 +32,9 @@ namespace DevReviews.API
             // Injeção de Dependência
             // Tipos: Transient, Scoped, Singleton
             services.AddSingleton<DevReviewsDbContext>();
+
+            // AutoMapper
+            services.AddAutoMapper(typeof(ProductProfile));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
