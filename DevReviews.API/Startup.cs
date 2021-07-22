@@ -29,11 +29,13 @@ namespace DevReviews.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Busca string de conexão e seta o banco de dados
             var connectionString = Configuration.GetValue<string>("DevReviewsCn");
+            services.AddDbContext<DevReviewsDbContext>(o => o.UseSqlServer(connectionString));
 
             // Injeção de Dependência
             // Tipos: Transient, Scoped, Singleton
-            services.AddSingleton<DevReviewsDbContext>();
+            // services.AddSingleton<DevReviewsDbContext>();
 
             // AutoMapper
             services.AddAutoMapper(typeof(ProductProfile));
