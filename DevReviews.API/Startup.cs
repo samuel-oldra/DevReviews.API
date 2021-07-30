@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 using DevReviews.API.Persistence;
+using DevReviews.API.Persistence.Repositories;
 using DevReviews.API.Profiles;
 
 namespace DevReviews.API
@@ -37,6 +38,7 @@ namespace DevReviews.API
             // Injeção de Dependência
             // Tipos: Transient, Scoped, Singleton
             // services.AddSingleton<DevReviewsDbContext>();
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             // AutoMapper
             services.AddAutoMapper(typeof(ProductProfile));
