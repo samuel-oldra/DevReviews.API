@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj": {}
+    "C:\\Users\\SAMUEL\\Desktop\\WebApi\\DevReviews.API\\DevReviews.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj": {
+    "C:\\Users\\SAMUEL\\Desktop\\WebApi\\DevReviews.API\\DevReviews.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj",
+        "projectUniqueName": "C:\\Users\\SAMUEL\\Desktop\\WebApi\\DevReviews.API\\DevReviews.API.csproj",
         "projectName": "DevReviews.API",
-        "projectPath": "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj",
+        "projectPath": "C:\\Users\\SAMUEL\\Desktop\\WebApi\\DevReviews.API\\DevReviews.API.csproj",
         "packagesPath": "C:\\Users\\SAMUEL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\obj\\",
+        "outputPath": "C:\\Users\\SAMUEL\\Desktop\\WebApi\\DevReviews.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SAMUEL\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -55,6 +55,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.11, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[4.1.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
