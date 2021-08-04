@@ -60,6 +60,10 @@
               "target": "Package",
               "version": "[4.1.0, )"
             },
+            "Serilog.Sinks.MSSqlServer": {
+              "target": "Package",
+              "version": "[5.6.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
