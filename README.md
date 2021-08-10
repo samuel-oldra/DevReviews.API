@@ -1,4 +1,4 @@
-# Projeto de API usando C# e .NET Core
+# Projeto de API usando C# e .NET 5
 
 ## DevReviews - Jornada .NET Direto ao Ponto
 
@@ -43,7 +43,7 @@ dotnet user-secrets list
 dotnet tool install --global dotnet-ef
 ```
 
-## Migratons
+## Migrations
 ```
 dotnet ef migrations add InitialMigration -o Persistence/Migrations
 dotnet ef database update
