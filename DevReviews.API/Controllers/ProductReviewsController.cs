@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
 using AutoMapper;
 using DevReviews.API.Entities;
 using DevReviews.API.Models;
 using DevReviews.API.Persistence.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using Serilog;
+using System.Threading.Tasks;
 
 namespace DevReviews.API.Controllers
 {
@@ -25,10 +22,12 @@ namespace DevReviews.API.Controllers
             this._mapper = mapper;
         }
 
-        // GET: api/products/1/productreviews/5
+        // GET: api/products/{productId}/productreviews/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int productId, int id)
         {
+            Log.Information("Endpoint - GET: api/products/{productId}/productreviews/{id}");
+
             // TODO: productId não é usado para nada
             var productReview = await _repository.GetReviewByIdAsync(id);
 
@@ -42,10 +41,12 @@ namespace DevReviews.API.Controllers
             return Ok(productDetails);
         }
 
-        // POST: api/products/1/productreviews
+        // POST: api/products/{productId}/productreviews
         [HttpPost]
         public async Task<IActionResult> Post(int productId, AddProductReviewInputModel model)
         {
+            Log.Information("Endpoint - POST: api/products/{productId}/productreviews");
+
             var productReview = new ProductReview(model.Author, model.Rating, model.Comments, productId);
 
             await _repository.AddReviewAsync(productReview);

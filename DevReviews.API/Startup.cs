@@ -1,23 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using Microsoft.EntityFrameworkCore;
-
 using DevReviews.API.Persistence;
 using DevReviews.API.Persistence.Repositories;
 using DevReviews.API.Profiles;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace DevReviews.API
 {
@@ -33,9 +26,13 @@ namespace DevReviews.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // PARA ACESSO AO BANCO EM MEMÓRIA
+            services.AddDbContext<DevReviewsDbContext>(o => o.UseInMemoryDatabase("DevGamesDb"));
+
+            // PARA ACESSO AO SQL Server
             // Busca string de conexão e seta o banco de dados
-            var connectionString = Configuration.GetValue<string>("DevReviewsCn");
-            services.AddDbContext<DevReviewsDbContext>(o => o.UseSqlServer(connectionString));
+            // var connectionString = Configuration.GetValue<string>("DevReviewsCn");
+            // services.AddDbContext<DevReviewsDbContext>(o => o.UseSqlServer(connectionString));
 
             // Injeção de Dependência
             // Tipos: Transient, Scoped, Singleton
