@@ -27,7 +27,9 @@ namespace DevReviews.API.Controllers
         {
             var products = _dbContext.Products;
 
-            return Ok(products);
+            var productsViewModel = products.Select(p => new ProductViewModel(p.Id, p.Title, p.Price));
+
+            return Ok(productsViewModel);
         }
 
         // GET: api/products/{id}
@@ -43,7 +45,21 @@ namespace DevReviews.API.Controllers
                 return NotFound();
             }
 
-            return Ok(product);
+            var reviewsViewModel = product
+                .Reviews
+                .Select(r => new ProductReviewViewModel(r.Id, r.Author, r.Rating, r.Comments, r.RegisteredAt))
+                .ToList();
+
+            var productDetails = new ProductDetailsViewModel(
+                product.Id,
+                product.Title,
+                product.Description,
+                product.Price,
+                product.RegisteredAt,
+                reviewsViewModel
+            );
+
+            return Ok(productDetails);
         }
 
         // POST: api/products
