@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0dCy2IWQGfHuML7D+u3w/R+jP4+aQeWpbWA8ihQIbBr7c3QtKhRZ6d3UxB3y3Hsl5gwCxJWVnenBUv12fg0Zgw==",
+  "dgSpecHash": "hHIR1t11sBs5AxLyyuVxsMG9jGegErFOhKaJ983gdjCc6iZYQrylMEdWb9Vusv1+ksH3HfoDouLL/Mj4uVzgTA==",
   "success": true,
   "projectFilePath": "C:\\PROJ\\SBO\\Projeto-WebApi-DotNet-5\\DevReviews.API\\DevReviews.API.csproj",
   "expectedPackageFiles": [
@@ -163,8 +163,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\SamuelBrandoOldra\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.14\\microsoft.netcore.app.host.win-x64.5.0.14.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
