@@ -2,6 +2,7 @@ using AutoMapper;
 using DevReviews.API.Entities;
 using DevReviews.API.Models;
 using DevReviews.API.Persistence.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Threading.Tasks;
@@ -12,18 +13,28 @@ namespace DevReviews.API.Controllers
     [Route("api/products/{productId}/productreviews")]
     public class ProductReviewsController : ControllerBase
     {
-        private readonly IProductRepository _repository;
-
         private readonly IMapper _mapper;
 
-        public ProductReviewsController(IProductRepository repository, IMapper mapper)
+        private readonly IProductRepository _repository;
+
+        public ProductReviewsController(IMapper mapper, IProductRepository repository)
         {
-            this._repository = repository;
             this._mapper = mapper;
+            this._repository = repository;
         }
 
         // GET: api/products/{productId}/productreviews/{id}
+        /// <summary>
+        /// Detalhes do Review
+        /// </summary>
+        /// <param name="productId">ID do Produto</param>
+        /// <param name="id">ID do Review</param>
+        /// <returns>Mostra um Review</returns>
+        /// <response code="200">Sucesso</response>
+        /// <response code="404">Não encontrado</response>
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int productId, int id)
         {
             Log.Information("Endpoint - GET: api/products/{productId}/productreviews/{id}");
@@ -42,7 +53,25 @@ namespace DevReviews.API.Controllers
         }
 
         // POST: api/products/{productId}/productreviews
+        /// <summary>
+        /// Cadastro de Review
+        /// </summary>
+        /// <remarks>
+        /// Requisição:
+        /// {
+        ///     "rating": 5,
+        ///     "author": "Joana",
+        ///     "comments": "Confortável"
+        /// }
+        /// </remarks>
+        /// <param name="productId">ID do Produto</param>
+        /// <param name="model">Dados do Review</param>
+        /// <returns>Objeto criado</returns>
+        /// <response code="201">Sucesso</response>
+        /// <response code="400">Dados inválidos</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Post(int productId, AddProductReviewInputModel model)
         {
             Log.Information("Endpoint - POST: api/products/{productId}/productreviews");

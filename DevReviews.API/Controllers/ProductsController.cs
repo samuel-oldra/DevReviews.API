@@ -48,7 +48,7 @@ namespace DevReviews.API.Controllers
         /// Detalhes do Produto
         /// </summary>
         /// <param name="id">ID do Produto</param>
-        /// <returns>Lista um Produto</returns>
+        /// <returns>Mostra um Produto</returns>
         /// <response code="200">Sucesso</response>
         /// <response code="404">Não encontrado</response>
         [HttpGet("{id}")]
@@ -120,7 +120,6 @@ namespace DevReviews.API.Controllers
         /// </remarks>
         /// <param name="id">ID do Produto</param>
         /// <param name="model">Dados do Produto</param>
-        /// <returns>Objeto atualizado</returns>
         /// <response code="204">Sucesso</response>
         /// <response code="400">Dados inválidos</response>
         /// <response code="404">Não encontrado</response>
