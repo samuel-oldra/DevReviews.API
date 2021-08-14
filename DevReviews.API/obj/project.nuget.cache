@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RTjHl633vYdeqgUkZWE1+gM6uMYGWHfJl14k2JMjlDuFoIhWW+/gl9poI/XlBUrFW0fzWxDmIJaDO3lvS+Lv/Q==",
+  "dgSpecHash": "sRci/FpI812z89SNiBbn0TqFpcfQQ8rsqCa/6OQd5+Alrecdu3XffpXgz6qc88BuRSm6Ld90PoeJP+c320+rVQ==",
   "success": true,
-  "projectFilePath": "c:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj",
+  "projectFilePath": "C:\\Users\\SAMUEL\\Desktop\\GitHub\\Projeto-API-C-Sharp\\DevReviews.API\\DevReviews.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SAMUEL\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\SAMUEL\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
