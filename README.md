@@ -22,7 +22,7 @@ Foi desenvolvida uma API REST completa de gerenciamento de produtos e suas avali
 
 ###
 
-![alt text](https://raw.githubusercontent.com/samuel-oldra/Projeto-WebApi-DotNet-5/main/README_IMGS/swagger_ui.png)
+![alt text](https://raw.githubusercontent.com/samuel-oldra/DevReviews.API/main/README_IMGS/swagger_ui.png)
 
 ## Comandos básicos:
 ```
