@@ -15,3 +15,8 @@ dotnet user-secrets init
 dotnet user-secrets set "DevReviewsCn" "Server=localhost;Initial Catalog=jornada-dotnet-db;Persist Security Info=False;User ID=sa;Password=senha;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 dotnet user-secrets list
 ```
+
+## Tool Entity Framework Core (migrations)
+```
+dotnet tool install --global dotnet-ef
+```
