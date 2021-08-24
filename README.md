@@ -27,6 +27,7 @@ Foi desenvolvida uma API REST completa de gerenciamento de produtos e suas avali
 
 ## Comandos básicos
 ```
+dotnet new gitignore
 dotnet new webapi -o DevReviews.API
 dotnet build
 dotnet run
