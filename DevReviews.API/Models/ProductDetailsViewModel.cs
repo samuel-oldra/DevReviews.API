@@ -17,7 +17,13 @@ namespace DevReviews.API.Models
 
         public List<ProductReviewViewModel> Reviews { get; private set; }
 
-        public ProductDetailsViewModel(int id, string title, string description, decimal price, DateTime registeredAt, List<ProductReviewViewModel> reviews)
+        public ProductDetailsViewModel(
+            int id,
+            string title,
+            string description,
+            decimal price,
+            DateTime registeredAt,
+            List<ProductReviewViewModel> reviews)
         {
             this.Id = id;
             this.Title = title;
@@ -40,7 +46,12 @@ namespace DevReviews.API.Models
 
         public DateTime RegisteredAt { get; private set; }
 
-        public ProductReviewViewModel(int id, string author, int rating, string comments, DateTime registeredAt)
+        public ProductReviewViewModel(
+            int id,
+            string author,
+            int rating,
+            string comments,
+            DateTime registeredAt)
         {
             this.Id = id;
             this.Author = author;

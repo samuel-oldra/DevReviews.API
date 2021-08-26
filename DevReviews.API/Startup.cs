@@ -16,7 +16,8 @@ namespace DevReviews.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration) => Configuration = configuration;
+        public Startup(IConfiguration configuration) =>
+            Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
@@ -33,16 +34,15 @@ namespace DevReviews.API
 
             // Injeção de Dependência
             // Tipos: Transient, Scoped, Singleton
+            // Padrão Repository
             // services.AddSingleton<DevReviewsDbContext>();
             services.AddScoped<IProductRepository, ProductRepository>();
 
-            // AutoMapper
-            services.AddAutoMapper(typeof(ProductProfile));
-
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+
+            services.AddSwaggerGen(o =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
+                o.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "DevReviews.API",
                     Version = "v1",
@@ -57,8 +57,11 @@ namespace DevReviews.API
                 // Incluindo comentários XML ao Swagger
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
+                o.IncludeXmlComments(xmlPath);
             });
+
+            // AutoMapper
+            services.AddAutoMapper(typeof(ProductProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,7 +72,11 @@ namespace DevReviews.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DevReviews.API v1"));
+                app.UseSwaggerUI(o =>
+                {
+                    o.RoutePrefix = string.Empty;
+                    o.SwaggerEndpoint("/swagger/v1/swagger.json", "DevReviews.API v1");
+                });
             }
 
             app.UseHttpsRedirection();
