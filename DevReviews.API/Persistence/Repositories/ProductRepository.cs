@@ -22,7 +22,7 @@ namespace DevReviews.API.Persistence.Repositories
             await _dbContext.Products.Include(p => p.Reviews).SingleOrDefaultAsync(p => p.Id == id);
 
         public async Task<ProductReview> GetReviewByIdAsync(int id) =>
-            await _dbContext.ProductReviews.SingleOrDefaultAsync(p => p.Id == id);
+            await _dbContext.ProductReviews.SingleOrDefaultAsync(pr => pr.Id == id);
 
         public async Task AddAsync(Product product)
         {

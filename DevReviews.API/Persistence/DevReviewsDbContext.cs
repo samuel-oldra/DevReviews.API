@@ -5,11 +5,11 @@ namespace DevReviews.API.Persistence
 {
     public class DevReviewsDbContext : DbContext
     {
-        public DevReviewsDbContext(DbContextOptions<DevReviewsDbContext> options) : base(options) { }
-
         public DbSet<Product> Products { get; set; }
 
         public DbSet<ProductReview> ProductReviews { get; set; }
+
+        public DevReviewsDbContext(DbContextOptions<DevReviewsDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -19,19 +19,19 @@ namespace DevReviews.API.Persistence
                 p.HasKey(p => p.Id);
 
                 p
-                    .HasMany(pp => pp.Reviews)
+                    .HasMany(p => p.Reviews)
                     .WithOne()
-                    .HasForeignKey(r => r.ProductId)
+                    .HasForeignKey(pr => pr.ProductId)
                     .OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<ProductReview>(pr =>
             {
                 pr.ToTable("tb_ProductReviews");
-                pr.HasKey(p => p.Id);
+                pr.HasKey(pr => pr.Id);
 
                 pr
-                    .Property(p => p.Author)
+                    .Property(pr => pr.Author)
                     .HasMaxLength(50)
                     .IsRequired();
             });
