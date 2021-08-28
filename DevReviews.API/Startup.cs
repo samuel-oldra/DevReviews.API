@@ -1,6 +1,7 @@
 using DevReviews.API.Persistence;
 using DevReviews.API.Persistence.Repositories;
 using DevReviews.API.Profiles;
+using DevReviews.API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +37,7 @@ namespace DevReviews.API
             // Tipos: Transient, Scoped, Singleton
             // Padrão Repository
             // services.AddSingleton<DevReviewsDbContext>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddControllers();

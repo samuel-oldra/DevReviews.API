@@ -1,7 +1,6 @@
 using AutoMapper;
-using DevReviews.API.Entities;
 using DevReviews.API.Models;
-using DevReviews.API.Persistence.Repositories;
+using DevReviews.API.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
@@ -14,14 +13,16 @@ namespace DevReviews.API.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-        private readonly IMapper _mapper;
+        private readonly IMapper mapper;
 
-        private readonly IProductRepository _repository;
+        private readonly IProductService productService;
 
-        public ProductsController(IMapper mapper, IProductRepository repository)
+        public ProductsController(
+            IMapper mapper,
+            IProductService productService)
         {
-            this._mapper = mapper;
-            this._repository = repository;
+            this.mapper = mapper;
+            this.productService = productService;
         }
 
         // GET: api/products
@@ -36,9 +37,9 @@ namespace DevReviews.API.Controllers
         {
             Log.Information("Endpoint - GET: api/products");
 
-            var products = await _repository.GetAllAsync();
+            var products = await productService.GetAllAsync();
 
-            var productsViewModel = _mapper.Map<List<ProductViewModel>>(products);
+            var productsViewModel = mapper.Map<List<ProductViewModel>>(products);
 
             return Ok(productsViewModel);
         }
@@ -58,12 +59,12 @@ namespace DevReviews.API.Controllers
         {
             Log.Information("Endpoint - GET: api/products/{id}");
 
-            var product = await _repository.GetDetailsByIdAsync(id);
+            var product = await productService.GetDetailsByIdAsync(id);
 
             if (product == null)
                 return NotFound();
 
-            var productDetails = _mapper.Map<ProductDetailsViewModel>(product);
+            var productDetails = mapper.Map<ProductDetailsViewModel>(product);
 
             return Ok(productDetails);
         }
@@ -94,11 +95,9 @@ namespace DevReviews.API.Controllers
             if (model.Description.Length > 50)
                 return BadRequest();
 
-            var product = new Product(model.Title, model.Description, model.Price);
-
             Log.Information("Método POST chamado!");
 
-            await _repository.AddAsync(product);
+            var product = await productService.AddAsync(model);
 
             return CreatedAtAction(nameof(GetById), new { id = product.Id }, model);
         }
@@ -130,14 +129,12 @@ namespace DevReviews.API.Controllers
             if (model.Description.Length > 50)
                 return BadRequest();
 
-            var product = await _repository.GetByIdAsync(id);
+            var product = await productService.GetByIdAsync(id);
 
             if (product == null)
                 return NotFound();
 
-            product.Update(model.Description, model.Price);
-
-            await _repository.UpdateAsync(product);
+            product = await productService.UpdateAsync(product, model);
 
             return NoContent();
         }

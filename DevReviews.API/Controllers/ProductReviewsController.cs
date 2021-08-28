@@ -1,7 +1,6 @@
 using AutoMapper;
-using DevReviews.API.Entities;
 using DevReviews.API.Models;
-using DevReviews.API.Persistence.Repositories;
+using DevReviews.API.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
@@ -13,14 +12,16 @@ namespace DevReviews.API.Controllers
     [Route("api/products/{productId}/productreviews")]
     public class ProductReviewsController : ControllerBase
     {
-        private readonly IMapper _mapper;
+        private readonly IMapper mapper;
 
-        private readonly IProductRepository _repository;
+        private readonly IProductService productService;
 
-        public ProductReviewsController(IMapper mapper, IProductRepository repository)
+        public ProductReviewsController(
+            IMapper mapper,
+            IProductService productService)
         {
-            this._mapper = mapper;
-            this._repository = repository;
+            this.mapper = mapper;
+            this.productService = productService;
         }
 
         // GET: api/products/{productId}/productreviews/{id}
@@ -39,12 +40,12 @@ namespace DevReviews.API.Controllers
         {
             Log.Information("Endpoint - GET: api/products/{productId}/productreviews/{id}");
 
-            var productReview = await _repository.GetReviewByIdAsync(id);
+            var productReview = await productService.GetReviewByIdAsync(id);
 
             if (productReview == null)
                 return NotFound();
 
-            var productDetails = _mapper.Map<ProductReviewDetailsViewModel>(productReview);
+            var productDetails = mapper.Map<ProductReviewDetailsViewModel>(productReview);
 
             return Ok(productDetails);
         }
@@ -73,9 +74,7 @@ namespace DevReviews.API.Controllers
         {
             Log.Information("Endpoint - POST: api/products/{productId}/productreviews");
 
-            var productReview = new ProductReview(model.Author, model.Rating, model.Comments, productId);
-
-            await _repository.AddReviewAsync(productReview);
+            var productReview = await productService.AddReviewAsync(productId, model);
 
             return CreatedAtAction(nameof(GetById), new { id = productReview.Id, productId = productId }, model);
         }
