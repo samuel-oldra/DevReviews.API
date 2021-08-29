@@ -7,7 +7,7 @@ Foi desenvolvida uma API REST completa de gerenciamento de produtos e suas avali
 ## Tecnologias e práticas utilizadas
 - ASP.NET Core com .NET 5
 - Entity Framework Core
-- SQL Server / In-Memory database
+- SQLite / In-Memory database
 - Swagger
 - AutoMapper
 - Injeção de Dependência
