@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 using AutoMapper;
 using DevReviews.API.Entities;
 using DevReviews.API.Models;
-using DevReviews.API.Persistence;
+using DevReviews.API.Persistence.Repositories;
 
 namespace DevReviews.API.Controllers
 {
@@ -16,13 +15,13 @@ namespace DevReviews.API.Controllers
     [Route("api/products/{productId}/productreviews")]
     public class ProductReviewsController : ControllerBase
     {
-        private readonly DevReviewsDbContext _dbContext;
+        private readonly IProductRepository _repository;
 
         private readonly IMapper _mapper;
 
-        public ProductReviewsController(DevReviewsDbContext dbContext, IMapper mapper)
+        public ProductReviewsController(IProductRepository repository, IMapper mapper)
         {
-            this._dbContext = dbContext;
+            this._repository = repository;
             this._mapper = mapper;
         }
 
@@ -31,7 +30,7 @@ namespace DevReviews.API.Controllers
         public async Task<IActionResult> GetById(int productId, int id)
         {
             // Se não existir com o id especificado, retornar NotFound()
-            var productReview = await _dbContext.ProductReviews.SingleOrDefaultAsync(p => p.Id == id);
+            var productReview = await _repository.GetReviewByIdAsync(id);
 
             if (productReview == null)
             {
@@ -50,8 +49,7 @@ namespace DevReviews.API.Controllers
             // Se tiver com dados inválidos, retornar BadRequest()
             var productReview = new ProductReview(model.Author, model.Rating, model.Comments, productId);
 
-            await _dbContext.ProductReviews.AddAsync(productReview);
-            await _dbContext.SaveChangesAsync();
+            await _repository.AddReviewAsync(productReview);
 
             return CreatedAtAction(nameof(GetById), new { id = productReview.Id, productId = productId }, model);
         }
