@@ -28,6 +28,11 @@ namespace DevReviews.API
             // PARA ACESSO AO BANCO EM MEMÓRIA
             // services.AddDbContext<DevReviewsDbContext>(o => o.UseInMemoryDatabase("DevReviewsDb"));
 
+            // PARA ACESSO AO SQL Server
+            // Busca string de conexão e seta o banco de dados
+            // var connectionString = Configuration.GetValue<string>("DevReviewsCs");
+            // services.AddDbContext<DevReviewsDbContext>(o => o.UseSqlServer(connectionString));
+
             // PARA ACESSO AO SQLite
             var connectionString = Configuration.GetConnectionString("DevReviewsCs");
             services.AddDbContext<DevReviewsDbContext>(o => o.UseSqlite(connectionString));
