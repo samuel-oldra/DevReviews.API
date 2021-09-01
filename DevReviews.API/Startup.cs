@@ -46,7 +46,17 @@ namespace DevReviews.API
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DevReviews.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "DevReviews.API",
+                    Version = "v1",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Samuel B. Oldra",
+                        Email = "samuel.oldra@gmail.com",
+                        Url = new Uri("https://github.com/samuel-oldra/Projeto-API-C-Sharp")
+                    }
+                });
             });
         }
 
