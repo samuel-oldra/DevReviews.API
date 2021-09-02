@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 using AutoMapper;
@@ -53,7 +54,21 @@ namespace DevReviews.API.Controllers
         }
 
         // POST: api/products
+        /// <summary>Cadastro de Produto</summary>
+        /// <remarks>Requisição:
+        /// {
+        ///     "title": "Chinelo",
+        ///     "description": "Havaianas tam. 41",
+        ///     "price": 45
+        /// }
+        /// </remarks>
+        /// <param name="model">Objeto com dados do Cadastro de Produto</param>
+        /// <returns>Objeto recém-criado</returns>
+        /// <response code="201">Sucesso</response>
+        /// <response code="400">Dados inválidos</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Post(AddProductInputModel model)
         {
             if (model.Description.Length > 50)
