@@ -14,6 +14,7 @@ Foi desenvolvida uma API REST completa de gerenciamento de produtos e suas avali
 - Programação Orientada a Objetos
 - Padrão Repository
 - Logs com Serilog
+- Testes com xUnit, AutoFixture, Moq e Shouldly
 - Clean Code
 - Publicação
 
@@ -32,6 +33,7 @@ dotnet new webapi -o DevReviews.API
 dotnet build
 dotnet run
 dotnet watch run
+dotnet test
 dotnet publish
 ```
 
