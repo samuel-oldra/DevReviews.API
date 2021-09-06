@@ -9,6 +9,7 @@ using AutoMapper;
 using DevReviews.API.Entities;
 using DevReviews.API.Models;
 using DevReviews.API.Persistence.Repositories;
+using Serilog;
 
 namespace DevReviews.API.Controllers
 {
@@ -77,6 +78,8 @@ namespace DevReviews.API.Controllers
             }
 
             var product = new Product(model.Title, model.Description, model.Price);
+
+            Log.Information("Método POST chamado!");
 
             await _repository.AddAsync(product);
 
