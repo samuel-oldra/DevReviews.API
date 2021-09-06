@@ -5,13 +5,78 @@ using DevReviews.API.Persistence.Repositories;
 using DevReviews.API.Services;
 using Moq;
 using Shouldly;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace DevReviews.API.Tests
 {
     public class ProductTest
     {
+        [Fact]
+        public async void GetAllAsync()
+        {
+            // Arrange
+            var productRepositoryMock = new Mock<IProductRepository>();
+
+            var productService = new ProductService(productRepositoryMock.Object);
+
+            // Act
+            var products = await productService.GetAllAsync();
+
+            // Assert
+            productRepositoryMock.Verify(pr => pr.GetAllAsync(), Times.Once);
+        }
+
+        [Fact]
+        public async void GetByIdAsync()
+        {
+            // Arrange
+            var productId = new Fixture().Create<int>();
+
+            var productRepositoryMock = new Mock<IProductRepository>();
+
+            var productService = new ProductService(productRepositoryMock.Object);
+
+            // Act
+            var product = await productService.GetByIdAsync(productId);
+
+            // Assert
+            productRepositoryMock.Verify(pr => pr.GetByIdAsync(It.IsAny<int>()), Times.Once);
+        }
+
+        [Fact]
+        public async void GetDetailsByIdAsync()
+        {
+            // Arrange
+            var productId = new Fixture().Create<int>();
+
+            var productRepositoryMock = new Mock<IProductRepository>();
+
+            var productService = new ProductService(productRepositoryMock.Object);
+
+            // Act
+            var product = await productService.GetDetailsByIdAsync(productId);
+
+            // Assert
+            productRepositoryMock.Verify(pr => pr.GetDetailsByIdAsync(It.IsAny<int>()), Times.Once);
+        }
+
+        [Fact]
+        public async void GetReviewByIdAsync()
+        {
+            // Arrange
+            var productId = new Fixture().Create<int>();
+
+            var productRepositoryMock = new Mock<IProductRepository>();
+
+            var productService = new ProductService(productRepositoryMock.Object);
+
+            // Act
+            var productReview = await productService.GetReviewByIdAsync(productId);
+
+            // Assert
+            productRepositoryMock.Verify(pr => pr.GetReviewByIdAsync(It.IsAny<int>()), Times.Once);
+        }
+
         [Fact]
         public async void AddAsync()
         {
