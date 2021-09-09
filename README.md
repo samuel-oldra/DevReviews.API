@@ -1,6 +1,28 @@
 # Projeto de API usando C# e .NET Core
 
-Jornada .NET Direto ao Ponto
+## DevReviews - Jornada .NET Direto ao Ponto
+
+Foi desenvolvida uma API REST completa de gerenciamento de produtos e suas avaliações de um e-Commerce.
+
+## Tecnologias e práticas utilizadas
+- ASP.NET Core com .NET 5
+- Entity Framework Core
+- SQL Server
+- Swagger
+- AutoMapper
+- Injeção de Dependência
+- Programação Orientada a Objetos
+- Padrão Repository
+- Logs com Serilog
+- Publicação
+
+## Funcionalidades
+- Cadastro, Listagem, Detalhes, Atualização e Remoção de Produto.
+- Cadastro e Detalhes de uma avaliação.
+
+###
+
+![alt text](https://raw.githubusercontent.com/samuel-oldra/Projeto-WebApi-DotNet-5/main/README_IMGS/swagger_ui.png)
 
 ## Comandos básicos:
 ```
