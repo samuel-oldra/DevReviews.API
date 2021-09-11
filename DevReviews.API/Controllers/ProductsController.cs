@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
 using AutoMapper;
 using DevReviews.API.Entities;
 using DevReviews.API.Models;
 using DevReviews.API.Persistence.Repositories;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DevReviews.API.Controllers
 {
@@ -31,6 +28,8 @@ namespace DevReviews.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            Log.Information("Endpoint - GET: api/products");
+
             var products = await _repository.GetAllAsync();
 
             var productsViewModel = _mapper.Map<List<ProductViewModel>>(products);
@@ -42,6 +41,8 @@ namespace DevReviews.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
+            Log.Information("Endpoint - GET: api/products/{id}");
+
             var product = await _repository.GetDetailsByIdAsync(id);
 
             if (product == null)
@@ -72,6 +73,8 @@ namespace DevReviews.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Post(AddProductInputModel model)
         {
+            Log.Information("Endpoint - POST: api/products");
+
             if (model.Description.Length > 50)
             {
                 return BadRequest();
@@ -90,6 +93,8 @@ namespace DevReviews.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, UpdateProductInputModel model)
         {
+            Log.Information("Endpoint - PUT: api/products/{id}");
+
             if (model.Description.Length > 50)
             {
                 return BadRequest();
