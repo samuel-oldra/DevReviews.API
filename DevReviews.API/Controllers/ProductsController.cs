@@ -14,18 +14,24 @@ namespace DevReviews.API.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-        private readonly IProductRepository _repository;
-
         private readonly IMapper _mapper;
 
-        public ProductsController(IProductRepository repository, IMapper mapper)
+        private readonly IProductRepository _repository;
+
+        public ProductsController(IMapper mapper, IProductRepository repository)
         {
-            this._repository = repository;
             this._mapper = mapper;
+            this._repository = repository;
         }
 
         // GET: api/products
+        /// <summary>
+        /// Listagem de Produtos
+        /// </summary>
+        /// <returns>Lista de Produtos</returns>
+        /// <response code="200">Sucesso</response>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
             Log.Information("Endpoint - GET: api/products");
@@ -38,7 +44,16 @@ namespace DevReviews.API.Controllers
         }
 
         // GET: api/products/{id}
+        /// <summary>
+        /// Detalhes do Produto
+        /// </summary>
+        /// <param name="id">ID do Produto</param>
+        /// <returns>Lista um Produto</returns>
+        /// <response code="200">Sucesso</response>
+        /// <response code="404">Não encontrado</response>
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
         {
             Log.Information("Endpoint - GET: api/products/{id}");
@@ -56,16 +71,19 @@ namespace DevReviews.API.Controllers
         }
 
         // POST: api/products
-        /// <summary>Cadastro de Produto</summary>
-        /// <remarks>Requisição:
+        /// <summary>
+        /// Cadastro de Produto
+        /// </summary>
+        /// <remarks>
+        /// Requisição:
         /// {
         ///     "title": "Chinelo",
         ///     "description": "Havaianas tam. 41",
         ///     "price": 45
         /// }
         /// </remarks>
-        /// <param name="model">Objeto com dados do Cadastro de Produto</param>
-        /// <returns>Objeto recém-criado</returns>
+        /// <param name="model">Dados do Produto</param>
+        /// <returns>Objeto criado</returns>
         /// <response code="201">Sucesso</response>
         /// <response code="400">Dados inválidos</response>
         [HttpPost]
@@ -90,7 +108,26 @@ namespace DevReviews.API.Controllers
         }
 
         // PUT: api/products/{id}
+        /// <summary>
+        /// Atualiza um Produto
+        /// </summary>
+        /// <remarks>
+        /// Requisição:
+        /// {
+        ///     "description": "Havaianas tam. 42",
+        ///     "price": 46
+        /// }
+        /// </remarks>
+        /// <param name="id">ID do Produto</param>
+        /// <param name="model">Dados do Produto</param>
+        /// <returns>Objeto atualizado</returns>
+        /// <response code="204">Sucesso</response>
+        /// <response code="400">Dados inválidos</response>
+        /// <response code="404">Não encontrado</response>
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Put(int id, UpdateProductInputModel model)
         {
             Log.Information("Endpoint - PUT: api/products/{id}");
@@ -108,6 +145,7 @@ namespace DevReviews.API.Controllers
             }
 
             product.Update(model.Description, model.Price);
+
             await _repository.UpdateAsync(product);
 
             return NoContent();
