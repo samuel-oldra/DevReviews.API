@@ -47,7 +47,7 @@ dotnet publish
 ### Comandos user-secrets
 ```
 dotnet user-secrets init
-dotnet user-secrets set "DevReviewsCn" "Server=localhost;Database=jornada-dotnet-db;User ID=sa;Password=senha;"
+dotnet user-secrets set "DevReviewsCn" "Server=***;Database=***;User ID=***;Password=***;"
 dotnet user-secrets list
 ```
 
