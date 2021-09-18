@@ -48,6 +48,8 @@ dotnet publish
 ```
 dotnet user-secrets init
 dotnet user-secrets set "DevReviewsCn" "Server=***;Database=***;User ID=***;Password=***;"
+dotnet user-secrets remove "DevReviewsCn"
+dotnet user-secrets clear
 dotnet user-secrets list
 ```
 
