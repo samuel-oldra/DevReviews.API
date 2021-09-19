@@ -17,18 +17,20 @@ Foi desenvolvida uma API REST completa de gerenciamento de produtos e suas avali
 - Publicação
 
 ## Funcionalidades
-- Cadastro, Listagem, Detalhes, Atualização e Remoção de Produto.
-- Cadastro e Detalhes de uma avaliação.
+- Cadastro, Listagem, Detalhes, Atualização e Remoção de Produto
+- Cadastro e Detalhes de uma Avaliação
 
 ###
 
 ![alt text](https://raw.githubusercontent.com/samuel-oldra/DevReviews.API/main/README_IMGS/swagger_ui.png)
 
-## Comandos básicos:
+## Comandos básicos
 ```
 dotnet new webapi -o DevReviews.API
 dotnet build
 dotnet run
+dotnet watch run
+dotnet publish
 ```
 
 ## Comandos user-secrets
