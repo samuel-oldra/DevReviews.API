@@ -5,9 +5,7 @@ namespace DevReviews.API.Persistence
 {
     public class DevReviewsDbContext : DbContext
     {
-        public DevReviewsDbContext(DbContextOptions<DevReviewsDbContext> options) : base(options)
-        {
-        }
+        public DevReviewsDbContext(DbContextOptions<DevReviewsDbContext> options) : base(options) { }
 
         public DbSet<Product> Products { get; set; }
 

@@ -42,10 +42,7 @@ namespace DevReviews.API.Controllers
             // TODO: productId não é usado para nada
             var productReview = await _repository.GetReviewByIdAsync(id);
 
-            if (productReview == null)
-            {
-                return NotFound();
-            }
+            if (productReview == null) return NotFound();
 
             var productDetails = _mapper.Map<ProductReviewDetailsViewModel>(productReview);
 
