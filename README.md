@@ -14,6 +14,7 @@ Foi desenvolvida uma API REST completa de gerenciamento de produtos e suas avali
 - Programação Orientada a Objetos
 - Padrão Repository
 - Logs com Serilog
+- Clean Code
 - Publicação
 
 ## Funcionalidades
