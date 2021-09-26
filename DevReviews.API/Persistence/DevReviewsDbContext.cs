@@ -30,7 +30,8 @@ namespace DevReviews.API.Persistence
                 pr.ToTable("tb_ProductReviews");
                 pr.HasKey(p => p.Id);
 
-                pr.Property(p => p.Author)
+                pr
+                    .Property(p => p.Author)
                     .HasMaxLength(50)
                     .IsRequired();
             });

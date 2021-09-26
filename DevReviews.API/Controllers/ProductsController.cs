@@ -60,7 +60,8 @@ namespace DevReviews.API.Controllers
 
             var product = await _repository.GetDetailsByIdAsync(id);
 
-            if (product == null) return NotFound();
+            if (product == null)
+                return NotFound();
 
             var productDetails = _mapper.Map<ProductDetailsViewModel>(product);
 
@@ -90,7 +91,8 @@ namespace DevReviews.API.Controllers
         {
             Log.Information("Endpoint - POST: api/products");
 
-            if (model.Description.Length > 50) return BadRequest();
+            if (model.Description.Length > 50)
+                return BadRequest();
 
             var product = new Product(model.Title, model.Description, model.Price);
 
@@ -125,11 +127,13 @@ namespace DevReviews.API.Controllers
         {
             Log.Information("Endpoint - PUT: api/products/{id}");
 
-            if (model.Description.Length > 50) return BadRequest();
+            if (model.Description.Length > 50)
+                return BadRequest();
 
             var product = await _repository.GetByIdAsync(id);
 
-            if (product == null) return NotFound();
+            if (product == null)
+                return NotFound();
 
             product.Update(model.Description, model.Price);
 

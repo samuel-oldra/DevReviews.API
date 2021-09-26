@@ -9,7 +9,8 @@ namespace DevReviews.API.Persistence.Repositories
     {
         private readonly DevReviewsDbContext _dbContext;
 
-        public ProductRepository(DevReviewsDbContext dbContext) => this._dbContext = dbContext;
+        public ProductRepository(DevReviewsDbContext dbContext) =>
+            this._dbContext = dbContext;
 
         public async Task<List<Product>> GetAllAsync() =>
             await _dbContext.Products.ToListAsync();
