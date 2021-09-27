@@ -8,7 +8,10 @@ namespace DevReviews.API.Models
 
         public decimal Price { get; private set; }
 
-        public ProductViewModel(int id, string title, decimal price)
+        public ProductViewModel(
+            int id,
+            string title,
+            decimal price)
         {
             this.Id = id;
             this.Title = title;

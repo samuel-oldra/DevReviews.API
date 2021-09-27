@@ -12,9 +12,9 @@ namespace DevReviews.API.Entities
 
         public string Comments { get; private set; }
 
-        public DateTime RegisteredAt { get; private set; }
-
         public int ProductId { get; private set; }
+
+        public DateTime RegisteredAt { get; private set; }
 
         public ProductReview(string author, int rating, string comments, int productId)
         {
