@@ -32,11 +32,18 @@ namespace DevReviews.API.Controllers
 
         // GET: api/products/{id}
         [HttpGet("{id}")]
-        public IActionResult GetById()
+        public IActionResult GetById(int id)
         {
             // Se não achar, retornar  NotFound()
 
-            return Ok();
+            var product = _dbContext.Products.SingleOrDefault(p => p.Id == id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(product);
         }
 
         // POST: api/products
@@ -44,6 +51,11 @@ namespace DevReviews.API.Controllers
         public IActionResult Post(AddProductInputModel model)
         {
             // Se tiver erros de validação, retornar BadRequest()
+
+            if (model.Description.Length > 50)
+            {
+                return BadRequest();
+            }
 
             var product = new Product(model.Title, model.Description, model.Price);
 
@@ -54,10 +66,24 @@ namespace DevReviews.API.Controllers
 
         // PUT: api/products/{id}
         [HttpPut("{id}")]
-        public IActionResult Put(UpdateProductInputModel model)
+        public IActionResult Put(int id, UpdateProductInputModel model)
         {
             // Se tiver erros de validação, retornar BadRequest()
             // Se não existir produto com o id especificado, retornar NotFound()
+
+            if (model.Description.Length > 50)
+            {
+                return BadRequest();
+            }
+
+            var product = _dbContext.Products.SingleOrDefault(p => p.Id == id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            product.Update(model.Description, model.Price);
 
             return NoContent();
         }
