@@ -63,5 +63,31 @@ namespace DevReviews.API.Tests
 
             productRepositoryMock.Verify(pr => pr.UpdateAsync(It.IsAny<Product>()), Times.Once);
         }
+
+        [Fact]
+        public async void AddReviewAsync()
+        {
+            // Arrange
+            var productId = new Fixture().Create<int>();
+            var addProductReviewInputModel = new Fixture().Create<AddProductReviewInputModel>();
+
+            var productRepositoryMock = new Mock<IProductRepository>();
+
+            var productService = new ProductService(productRepositoryMock.Object);
+
+            // Act
+            var addedProductReview = await productService.AddReviewAsync(productId, addProductReviewInputModel);
+
+            // Assert
+            Assert.Equal(addedProductReview.Rating, addProductReviewInputModel.Rating);
+            Assert.Equal(addedProductReview.Author, addProductReviewInputModel.Author);
+            Assert.Equal(addedProductReview.Comments, addProductReviewInputModel.Comments);
+
+            addedProductReview.Rating.ShouldBe(addProductReviewInputModel.Rating);
+            addedProductReview.Author.ShouldBe(addProductReviewInputModel.Author);
+            addedProductReview.Comments.ShouldBe(addProductReviewInputModel.Comments);
+
+            productRepositoryMock.Verify(pr => pr.AddReviewAsync(It.IsAny<ProductReview>()), Times.Once);
+        }
     }
 }
