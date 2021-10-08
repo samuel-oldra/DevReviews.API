@@ -9,7 +9,7 @@ using Xunit;
 
 namespace DevReviews.API.Tests
 {
-    public class ProductTest
+    public class ProductServiceTest
     {
         [Fact]
         public async void GetAllAsync()
