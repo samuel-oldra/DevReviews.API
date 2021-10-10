@@ -9,20 +9,20 @@ namespace DevReviews.API.Persistence.Repositories
     {
         private readonly DevReviewsDbContext _dbContext;
 
-        public ProductRepository(DevReviewsDbContext dbContext) =>
-            this._dbContext = dbContext;
+        public ProductRepository(DevReviewsDbContext dbContext)
+            => this._dbContext = dbContext;
 
-        public async Task<List<Product>> GetAllAsync() =>
-            await _dbContext.Products.ToListAsync();
+        public async Task<List<Product>> GetAllAsync()
+            => await _dbContext.Products.ToListAsync();
 
-        public async Task<Product> GetByIdAsync(int id) =>
-            await _dbContext.Products.SingleOrDefaultAsync(p => p.Id == id);
+        public async Task<Product> GetByIdAsync(int id)
+            => await _dbContext.Products.SingleOrDefaultAsync(p => p.Id == id);
 
-        public async Task<Product> GetDetailsByIdAsync(int id) =>
-            await _dbContext.Products.Include(p => p.Reviews).SingleOrDefaultAsync(p => p.Id == id);
+        public async Task<Product> GetDetailsByIdAsync(int id)
+            => await _dbContext.Products.Include(p => p.Reviews).SingleOrDefaultAsync(p => p.Id == id);
 
-        public async Task<ProductReview> GetReviewByIdAsync(int id) =>
-            await _dbContext.ProductReviews.SingleOrDefaultAsync(pr => pr.Id == id);
+        public async Task<ProductReview> GetReviewByIdAsync(int id)
+            => await _dbContext.ProductReviews.SingleOrDefaultAsync(pr => pr.Id == id);
 
         public async Task AddAsync(Product product)
         {

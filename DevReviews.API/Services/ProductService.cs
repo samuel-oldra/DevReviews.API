@@ -10,20 +10,20 @@ namespace DevReviews.API.Services
     {
         private readonly IProductRepository repository;
 
-        public ProductService(IProductRepository repository) =>
-            this.repository = repository;
+        public ProductService(IProductRepository repository)
+            => this.repository = repository;
 
-        public async Task<List<Product>> GetAllAsync() =>
-            await this.repository.GetAllAsync();
+        public async Task<List<Product>> GetAllAsync()
+            => await this.repository.GetAllAsync();
 
-        public async Task<Product> GetByIdAsync(int id) =>
-            await this.repository.GetByIdAsync(id);
+        public async Task<Product> GetByIdAsync(int id)
+            => await this.repository.GetByIdAsync(id);
 
-        public async Task<Product> GetDetailsByIdAsync(int id) =>
-            await this.repository.GetDetailsByIdAsync(id);
+        public async Task<Product> GetDetailsByIdAsync(int id)
+            => await this.repository.GetDetailsByIdAsync(id);
 
-        public async Task<ProductReview> GetReviewByIdAsync(int id) =>
-            await this.repository.GetReviewByIdAsync(id);
+        public async Task<ProductReview> GetReviewByIdAsync(int id)
+            => await this.repository.GetReviewByIdAsync(id);
 
         public async Task<Product> AddAsync(AddProductInputModel model)
         {
