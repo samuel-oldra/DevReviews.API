@@ -12,7 +12,7 @@ namespace DevReviews.API
 
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
-            Host.CreateDefaultBuilder(args)
+            return Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     //var settings = config.Build();
