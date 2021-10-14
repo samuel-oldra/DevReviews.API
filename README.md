@@ -47,6 +47,7 @@ dotnet user-secrets list
 ## Tool Entity Framework Core (migrations)
 ```
 dotnet tool install --global dotnet-ef
+dotnet tool uninstall --global dotnet-ef
 ```
 
 ## Migrations

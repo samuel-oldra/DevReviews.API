@@ -78,7 +78,7 @@ namespace DevReviews.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // Se quiser liberar Swagger em produção, mudar esse if
+            // INFO: Swagger visível só em desenvolvimento
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
