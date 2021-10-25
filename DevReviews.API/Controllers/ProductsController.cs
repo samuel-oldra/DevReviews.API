@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 using AutoMapper;
 using DevReviews.API.Entities;
@@ -42,7 +43,10 @@ namespace DevReviews.API.Controllers
         {
             // Se não achar, retornar  NotFound()
 
-            var product = _dbContext.Products.SingleOrDefault(p => p.Id == id);
+            var product = _dbContext
+                .Products
+                .Include(p => p.Reviews)
+                .SingleOrDefault(p => p.Id == id);
 
             if (product == null)
             {
@@ -68,6 +72,7 @@ namespace DevReviews.API.Controllers
             var product = new Product(model.Title, model.Description, model.Price);
 
             _dbContext.Products.Add(product);
+            _dbContext.SaveChanges();
 
             return CreatedAtAction(nameof(GetById), new { id = product.Id }, model);
         }
@@ -92,6 +97,7 @@ namespace DevReviews.API.Controllers
             }
 
             product.Update(model.Description, model.Price);
+            _dbContext.SaveChanges();
 
             return NoContent();
         }
