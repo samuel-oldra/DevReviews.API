@@ -40,8 +40,6 @@ namespace DevReviews.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            // Se não achar, retornar  NotFound()
-
             var product = await _repository.GetDetailsByIdAsync(id);
 
             if (product == null)
@@ -58,8 +56,6 @@ namespace DevReviews.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(AddProductInputModel model)
         {
-            // Se tiver erros de validação, retornar BadRequest()
-
             if (model.Description.Length > 50)
             {
                 return BadRequest();
@@ -76,9 +72,6 @@ namespace DevReviews.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, UpdateProductInputModel model)
         {
-            // Se tiver erros de validação, retornar BadRequest()
-            // Se não existir produto com o id especificado, retornar NotFound()
-
             if (model.Description.Length > 50)
             {
                 return BadRequest();

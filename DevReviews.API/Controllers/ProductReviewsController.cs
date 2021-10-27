@@ -29,7 +29,7 @@ namespace DevReviews.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int productId, int id)
         {
-            // Se não existir com o id especificado, retornar NotFound()
+            // TODO: productId não é usado para nada
             var productReview = await _repository.GetReviewByIdAsync(id);
 
             if (productReview == null)
@@ -46,7 +46,6 @@ namespace DevReviews.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(int productId, AddProductReviewInputModel model)
         {
-            // Se tiver com dados inválidos, retornar BadRequest()
             var productReview = new ProductReview(model.Author, model.Rating, model.Comments, productId);
 
             await _repository.AddReviewAsync(productReview);
