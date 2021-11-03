@@ -7,6 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+using Serilog;
+using Serilog.Sinks.MSSqlServer;
+
 namespace DevReviews.API
 {
     public class Program
@@ -18,6 +21,21 @@ namespace DevReviews.API
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+
+                    Serilog.Log.Logger = new LoggerConfiguration()
+                        .WriteTo.MSSqlServer(
+                            settings.GetValue<string>("DevReviewsCn"),
+                            sinkOptions: new MSSqlServerSinkOptions()
+                            {
+                                TableName = "Logs",
+                                AutoCreateSqlTable = true
+                            })
+                            .CreateLogger();
+                })
+                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
