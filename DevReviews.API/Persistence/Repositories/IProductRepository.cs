@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 using DevReviews.API.Entities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DevReviews.API.Persistence.Repositories
 {
@@ -18,7 +15,6 @@ namespace DevReviews.API.Persistence.Repositories
         Task<List<Product>> GetAllAsync();
 
         Task<Product> GetDetailsByIdAsync(int id);
-
 
         Task AddReviewAsync(ProductReview productReview);
 

@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-
 using DevReviews.API.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DevReviews.API.Persistence.Repositories
 {
@@ -46,7 +43,6 @@ namespace DevReviews.API.Persistence.Repositories
                 .Include(p => p.Reviews)
                 .SingleOrDefaultAsync(p => p.Id == id);
         }
-
 
         public async Task AddReviewAsync(ProductReview productReview)
         {
