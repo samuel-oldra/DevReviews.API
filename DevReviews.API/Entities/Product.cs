@@ -27,10 +27,7 @@ namespace DevReviews.API.Entities
             this.Reviews = new List<ProductReview>();
         }
 
-        public void AddReview(ProductReview review)
-        {
-            Reviews.Add(review);
-        }
+        public void AddReview(ProductReview review) => Reviews.Add(review);
 
         public void Update(string description, decimal price)
         {
