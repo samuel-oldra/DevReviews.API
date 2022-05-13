@@ -39,7 +39,6 @@ namespace DevReviews.API.Controllers
         {
             Log.Information("Endpoint - GET: api/products/{productId}/productreviews/{id}");
 
-            // TODO: productId não é usado para nada
             var productReview = await _repository.GetReviewByIdAsync(id);
 
             if (productReview == null) return NotFound();
