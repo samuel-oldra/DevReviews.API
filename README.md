@@ -13,13 +13,13 @@ Foi desenvolvida uma API REST completa de gerenciamento de produtos e suas avali
 - ASP.NET Core com .NET 5
 - Entity Framework Core
 - SQL Server / SQLite / In-Memory database
-- Swagger
-- AutoMapper
-- Injeção de Dependência
+- Swagger (documentação)
+- AutoMapper (mapeamento)
+- Serilog (log)
+- xUnit, AutoFixture, Moq e Shouldly (teste unitário)
 - Programação Orientada a Objetos
+- Injeção de Dependência
 - Padrão Repository
-- Logs com Serilog
-- Testes com xUnit, AutoFixture, Moq e Shouldly
 - Clean Code
 - Publicação
 
@@ -37,10 +37,13 @@ Foi desenvolvida uma API REST completa de gerenciamento de produtos e suas avali
 ```
 dotnet new gitignore
 dotnet new webapi -o DevReviews.API
+
 dotnet build
 dotnet run
 dotnet watch run
+
 dotnet test
+
 dotnet publish
 ```
 
