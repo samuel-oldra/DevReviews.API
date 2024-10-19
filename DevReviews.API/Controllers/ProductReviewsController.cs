@@ -16,6 +16,11 @@ namespace DevReviews.API.Controllers
 
         private readonly IProductService productService;
 
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="mapper"></param>
+        /// <param name="productService"></param>
         public ProductReviewsController(
             IMapper mapper,
             IProductService productService)

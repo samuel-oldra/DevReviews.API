@@ -5,6 +5,7 @@ using DevReviews.API.Persistence.Repositories;
 using DevReviews.API.Services;
 using Moq;
 using Shouldly;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace DevReviews.API.Tests
@@ -12,7 +13,7 @@ namespace DevReviews.API.Tests
     public class ProductServiceTest
     {
         [Fact]
-        public async void GetAllAsync()
+        public async Task GetAllAsync()
         {
             // Arrange
             var productRepositoryMock = new Mock<IProductRepository>();
@@ -27,7 +28,7 @@ namespace DevReviews.API.Tests
         }
 
         [Fact]
-        public async void GetByIdAsync()
+        public async Task GetByIdAsync()
         {
             // Arrange
             var addProductInputModel = new Fixture().Create<AddProductInputModel>();
@@ -50,7 +51,7 @@ namespace DevReviews.API.Tests
         }
 
         [Fact]
-        public async void GetDetailsByIdAsync()
+        public async Task GetDetailsByIdAsync()
         {
             // Arrange
             var addProductInputModel = new Fixture().Create<AddProductInputModel>();
@@ -73,7 +74,7 @@ namespace DevReviews.API.Tests
         }
 
         [Fact]
-        public async void GetReviewByIdAsync()
+        public async Task GetReviewByIdAsync()
         {
             // Arrange
             var addProductInputModel = new Fixture().Create<AddProductInputModel>();
@@ -96,7 +97,7 @@ namespace DevReviews.API.Tests
         }
 
         [Fact]
-        public async void AddAsync()
+        public async Task AddAsync()
         {
             // Arrange
             var addProductInputModel = new Fixture().Create<AddProductInputModel>();
@@ -123,7 +124,7 @@ namespace DevReviews.API.Tests
         }
 
         [Fact]
-        public async void UpdateAsync()
+        public async Task UpdateAsync()
         {
             // Arrange
             var addProductInputModel = new Fixture().Create<AddProductInputModel>();
@@ -153,7 +154,7 @@ namespace DevReviews.API.Tests
         }
 
         [Fact]
-        public async void AddReviewAsync()
+        public async Task AddReviewAsync()
         {
             // Arrange
             var addProductInputModel = new Fixture().Create<AddProductInputModel>();
