@@ -11,12 +11,12 @@ namespace DevReviews.API.Persistence.Migrations
                 name: "tb_Product",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(type: "TEXT", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false),
-                    RegisteredAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Title = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Price = table.Column<decimal>(nullable: false),
+                    RegisteredAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,13 +27,13 @@ namespace DevReviews.API.Persistence.Migrations
                 name: "tb_ProductReviews",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Author = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
-                    Rating = table.Column<int>(type: "INTEGER", nullable: false),
-                    Comments = table.Column<string>(type: "TEXT", nullable: true),
-                    ProductId = table.Column<int>(type: "INTEGER", nullable: false),
-                    RegisteredAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Author = table.Column<string>(maxLength: 50, nullable: false),
+                    Rating = table.Column<int>(nullable: false),
+                    Comments = table.Column<string>(nullable: true),
+                    ProductId = table.Column<int>(nullable: false),
+                    RegisteredAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

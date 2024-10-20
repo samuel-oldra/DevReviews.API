@@ -14,7 +14,7 @@ namespace DevReviews.API.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.17");
+                .HasAnnotation("ProductVersion", "3.1.32");
 
             modelBuilder.Entity("DevReviews.API.Entities.Product", b =>
                 {
@@ -47,8 +47,8 @@ namespace DevReviews.API.Persistence.Migrations
 
                     b.Property<string>("Author")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Comments")
                         .HasColumnType("TEXT");
@@ -76,11 +76,6 @@ namespace DevReviews.API.Persistence.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("DevReviews.API.Entities.Product", b =>
-                {
-                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }
